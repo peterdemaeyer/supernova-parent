@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>su.pernova</groupId>
+	<artifactId>bom</artifactId>
+	<name>Supernova BOM</name>
+	<description>Bill of materials and definition of standards for Supernova projects.</description>
+	<url>https://github.com/peterdemaeyer/supernova-bom/</url>
+	<version>${revision}${changelist}</version>
+	<packaging>pom</packaging>
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://raw.githubusercontent.com/peterdemaeyer/supernova-bom/main/LICENSE.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Peter De Maeyer</name>
+			<email>peter.de.maeyer@gmail.com</email>
+			<organization>Supernova</organization>
+			<organizationUrl>https://github.com/peterdemaeyer/</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git://github.com/peterdemaeyer/supernova-bom.git</connection>
+		<developerConnection>scm:git:ssh://github.com:peterdemaeyer/supernova-bom.git</developerConnection>
+		<url>https://github.com/peterdemaeyer/supernova-bom/tree/main/</url>
+		<tag>${project.version}</tag>
+	</scm>
+	<properties>
+		<revision>2.0.0</revision>
+		<changelist>-SNAPSHOT</changelist>
+		<maven.compiler.release>11</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Use two decimal places in reporting. -->
+		<jacoco.coverage.minimum>1.00</jacoco.coverage.minimum>
+		<!-- Dependency versions (alphabetically). -->
+		<checkstyle.version>10.12.2</checkstyle.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<commons-io.version>2.13.0</commons-io.version>
+		<commons-lang3.version>3.14.0</commons-lang3.version>
+		<commons-text.version>1.11.0</commons-text.version>
+		<jackson.version>2.17.2</jackson.version>
+		<junit-jupiter.version>5.10.2</junit-jupiter.version>
+		<junit-platform.version>1.10.2</junit-platform.version>
+		<log4j.version>2.23.1</log4j.version>
+		<mockito.version>5.11.0</mockito.version>
+		<!-- Maven plugin versions (alphabetically). -->
+		<build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
+		<flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+		<maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
+		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
+		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+		<maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
+		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
+		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<maven-shade-plugin.version>3.5.1</maven-shade-plugin.version>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+	</properties>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	<dependencyManagement>
+		<!-- Alphabetically, by group ID then by artifact ID. -->
+		<dependencies>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<!-- Compatibility with SLF4J. -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>${log4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<!-- Compatibility with Log4j 1.2. -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-1.2-api</artifactId>
+				<version>${log4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-junit-jupiter</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons-collections4.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-text</artifactId>
+				<version>${commons-text.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.puppycrawl.tools</groupId>
+				<artifactId>checkstyle</artifactId>
+				<version>${checkstyle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>commons</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>metrics</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>metrics</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>search</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>serialization</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>units</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>su.pernova</groupId>
+				<artifactId>statistics</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven-clean-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>${maven-toolchains-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven-install-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>${flatten-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-surefire-plugin.version}</version>
+					<configuration>
+						<failIfNoTests>false</failIfNoTests>
+						<excludes>
+							<exclude>**/*IntegrationTest.java</exclude>
+							<exclude>**/*ContractTest.java</exclude>
+						</excludes>
+						<includes>
+							<include>**/*Test.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven-failsafe-plugin.version}</version>
+					<configuration>
+						<!-- Supernova defines *IntegrationTest as integration test name pattern instead of the default *IT. -->
+						<includes>
+							<include>**/*IntegrationTest.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>${maven-shade-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>define-supernova-properties-validate</id>
+						<goals>
+							<goal>bsh-property</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>supernova.multiModule.parent</property>
+								<property>supernova.multiModule.child</property>
+								<property>supernova.multiModule.aggregate</property>
+								<property>supernova.multiModule.parentDir</property>
+								<property>supernova.multiModule.aggregateDir</property>
+								<property>supernova.jacoco.skipCopyResources</property>
+								<property>supernova.jacoco.skipMerge</property>
+								<property>supernova.jacoco.skipReport</property>
+								<property>supernova.jacoco.skipCheck</property>
+								<property>supernova.jacoco.reportTitle</property>
+							</properties>
+							<source>
+								import java.io.File;
+								import java.util.function.Supplier;
+
+								boolean getOrDefault(Properties properties, String name, Supplier supplier) {
+									String value = properties.getProperty(name);
+									if (value == null) {
+										return (Boolean) supplier.get();
+									}
+									return Boolean.parseBoolean(value);
+								}
+
+								properties = project.getProperties();
+								supernova.multiModule.parent = project.getArtifactId().endsWith("-parent");
+								parent = project.getParent();
+								supernova.multiModule.child = (parent != null) &amp;&amp; parent.getArtifactId().endsWith("-parent");
+								supernova.multiModule.aggregate = supernova.multiModule.child &amp;&amp; project.getArtifactId().endsWith("-aggregate");
+								supernova.multiModule.parentDir = (parent != null) ? parent.getBasedir() : null;
+								supernova.multiModule.aggregateDir = (parent != null) ? new File(supernova.multiModule.parentDir, parent.getArtifactId().replace("-parent", "-aggregate")) : null;
+								// Unfortunately, BeanShell does not support lambdas, so we have to spell out an anonymous inner class.
+								notNonAggregateChildSupplier = new Supplier() {
+
+									Boolean get() {
+										return !supernova.multiModule.child || supernova.multiModule.aggregate;
+									}
+								};
+								// Unfortunately, BeanShell does not support inline anonymous inner classes, so we have to define a variable for them.
+								supernova.jacoco.skipCopyResources = getOrDefault(properties, "supernova.jacoco.skipCopyResources", notNonAggregateChildSupplier);
+								// Merging serves two purposes:
+								// 1. In a regular module, merges UT an IT execution data files.
+								// 2. In an aggregate module, merges execution data files from all modules within reactor.
+								falseSupplier = new Supplier() {
+
+									Boolean get() {
+										return false;
+									}
+								};
+								supernova.jacoco.skipMerge = getOrDefault(properties, "supernova.jacoco.skipMerge", falseSupplier);
+								nonAggregateChildSupplier = new Supplier() {
+
+									Boolean get() {
+										return supernova.multiModule.child &amp;&amp; !supernova.multiModule.aggregate;
+									}
+								};
+								supernova.jacoco.skipReport = getOrDefault(properties, "supernova.jacoco.skipReport", nonAggregateChildSupplier);
+								supernova.jacoco.reportTitle = properties.getProperty("supernova.jacoco.reportTitle");
+								if (supernova.jacoco.reportTitle == null) {
+									String artifactId = project.getArtifactId();
+									// For multi-modules, strip the "-aggregate" from the artifact ID for the JaCoCo report title.
+									supernova.jacoco.reportTitle = supernova.multiModule.aggregate ? artifactId.substring(0, artifactId.length() - 10) : artifactId;
+								}
+								supernova.jacoco.skipCheck = getOrDefault(properties, "supernova.jacoco.skipCheck", nonAggregateChildSupplier);
+							</source>
+						</configuration>
+					</execution>
+					<execution>
+						<id>list-supernova-properties-validate</id>
+						<goals>
+							<goal>bsh-property</goal>
+						</goals>
+						<configuration>
+							<source>
+								import java.util.Map.Entry;
+
+								for (Entry entry : new TreeMap(project.getProperties()).entrySet()) {
+									String key = entry.getKey().toString();
+									if (key.startsWith("supernova.")) {
+										log.info(key + " = " + entry.getValue());
+									}
+								}
+							</source>
+						</configuration>
+					</execution>
+					<execution>
+						<id>define-supernova-properties-pre-clean</id>
+						<!-- Ideally, we need one "bsh-property" goal for all purposes, and we need it early in the lifecycle. -->
+						<!-- For the default lifecycle, this is the default "validate" phase. -->
+						<!-- For the "clean" lifecycle, this is the "pre-clean" phase (because it doesn't have a "validate" phase). -->
+						<!-- Unfortunately, this means we cannot define a single execution bound to a common phase. -->
+						<!-- We have to define multiple executions bound to different phases, with some inevitable code duplication. -->
+						<!-- Pity, but we accept the cost and move on. -->
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>bsh-property</goal>
+						</goals>
+						<configuration>
+							<properties>
+								<property>supernova.jacoco.skipDeleteSources</property>
+							</properties>
+							<source>
+								import java.io.File;
+								import java.util.function.Supplier;
+
+								boolean getOrDefault(Properties properties, String name, Supplier supplier) {
+									String value = properties.getProperty(name);
+									if (value == null) {
+										return (Boolean) supplier.get();
+									}
+									return Boolean.parseBoolean(value);
+								}
+
+								properties = project.getProperties();
+								parent = project.getParent();
+								supernova.multiModule.child = (parent != null) &amp;&amp; parent.getArtifactId().endsWith("-parent");
+								supernova.multiModule.aggregate = supernova.multiModule.child &amp;&amp; project.getArtifactId().endsWith("-aggregate");
+								// Unfortunately, BeanShell does not support lambdas, so we have to spell out an anonymous inner class.
+								aggregateChildSupplier = new Supplier() {
+
+									Boolean get() {
+										return !supernova.multiModule.child || !supernova.multiModule.aggregate;
+									}
+								};
+								supernova.jacoco.skipDeleteSources = getOrDefault(properties, "supernova.jacoco.skipDeleteSources", aggregateChildSupplier);
+							</source>
+						</configuration>
+					</execution>
+					<execution>
+						<id>list-supernova-properties-pre-clean</id>
+						<phase>pre-clean</phase>
+						<goals>
+							<goal>bsh-property</goal>
+						</goals>
+						<configuration>
+							<source>
+								import java.util.Map.Entry;
+
+								for (Entry entry : new TreeMap(project.getProperties()).entrySet()) {
+									String key = entry.getKey().toString();
+									if (key.startsWith("supernova.")) {
+										log.info(key + " = " + entry.getValue());
+									}
+								}
+							</source>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- The ID must match the ID of the default goal, because we want to reconfigure it. -->
+						<id>default-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<!-- Don't produce an artifact of type "jar" if main/src is empty. -->
+						<configuration>
+							<skipIfEmpty>true</skipIfEmpty>
+						</configuration>
+					</execution>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+						<!-- Don't produce an artifact of type "test-jar" if test/src is empty. -->
+						<configuration>
+							<skipIfEmpty>true</skipIfEmpty>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<enableAssertions>false</enableAssertions>
+						</configuration>
+					</execution>
+					<execution>
+						<id>integration-verify</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+						<!--
+							Given that we flatten the pom, it is useful to have the source pom.xml in the sources.
+							Especially for projects of packaging type "pom", for which it will be the ONLY file in the sources.
+						-->
+						<configuration>
+							<includePom>true</includePom>
+						</configuration>
+					</execution>
+					<execution>
+						<id>attach-test-sources</id>
+						<goals>
+							<goal>test-jar-no-fork</goal>
+						</goals>
+						<!-- The pom is already in the main sources jar, no need to include it here again. -->
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<excludePackageNames>*.internal.*</excludePackageNames>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<keyname>${gpg.keyname}</keyname>
+							<passphraseServerId>${gpg.server}</passphraseServerId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+					<!--
+						This parent POM should flatten as little as possible, to keep its BOM nature and pass on its
+						properties to its children.
+						Child POMs should flatten as much as possible, to avoid cluttering the public POM with
+						build-specific information.
+					-->
+					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten-flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--
+			The JaCoCo configuration supports single-module and multi-module projects, combining coverage of unit and
+			integration tests.
+			All Supernova projects must achieve 100% code coverage, hence the default ${jacoco.coverage.minimum} = 1.00.
+			Within a single module, code coverage of unit and integration tests is aggregated by using the same
+			destination file as set by ${jacoco.destFile}.
+			In multi-module projects, 100% code coverage may not be achieved in each of the individual modules,
+			but may be achieved by aggregating the code coverage of all the modules:
+			- my-project (main module, tests in this module alone do not reach 100% code coverage, lower the
+			${jacoco.coverage.minimum} or skip the check in those modules)
+			- [optional] my-project-extras (additional module)
+			- my-project-tests (additional module with tests, reaching 100% code coverage)
+			- my-project-aggregate (aggregate module combining the JaCoCo report for all other modules to achieve 100%
+			 code coverage)
+			-->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>jacoco-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<skip>${skipTests}</skip>
+							<destFile>${project.build.directory}/${project.artifactId}-ut.exec</destFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-prepare-agent-integration</id>
+						<goals>
+							<goal>prepare-agent-integration</goal>
+						</goals>
+						<configuration>
+							<skip>${skipITs}</skip>
+							<destFile>${project.build.directory}/${project.artifactId}-it.exec</destFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-merge</id>
+						<!-- It must come AFTER integration tests, but BEFORE the "check" goal, so we bind it to the same phase as the "check" goal but higher up in the POM so that it comes first. -->
+						<phase>verify</phase>
+						<goals>
+							<goal>merge</goal>
+						</goals>
+						<configuration>
+							<fileSets>
+								<fileSet>
+									<directory>${project.build.directory}</directory>
+									<includes>
+										<include>*.exec</include>
+									</includes>
+								</fileSet>
+							</fileSets>
+							<skip>${supernova.jacoco.skipMerge}</skip>
+							<destFile>${project.build.directory}/${project.artifactId}.exec</destFile>
+						</configuration>
+					</execution>
+					<!-- Use a single "report" goal to report on a single exec file which is the combined coverage of unit and integration tests. -->
+					<execution>
+						<id>jacoco-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<skip>${supernova.jacoco.skipReport}</skip>
+							<dataFile>${project.build.directory}/${project.artifactId}.exec</dataFile>
+							<formats>HTML</formats>
+							<title>${supernova.jacoco.reportTitle}</title>
+						</configuration>
+					</execution>
+<!--					&lt;!&ndash; Use a "report-aggregate" goal for multi-module aggregator projects. &ndash;&gt;-->
+<!--					<execution>-->
+<!--						<id>jacoco-report-aggregate</id>-->
+<!--						<phase>verify</phase>-->
+<!--						<goals>-->
+<!--							<goal>report-aggregate</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<skip>${supernova.jacoco.skipReportAggregate}</skip>-->
+<!--							<formats>HTML</formats>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--					&lt;!&ndash; Across multiple modules of a multi-module project, merges *.exec into *-aggregate.exec. &ndash;&gt;-->
+<!--					<execution>-->
+<!--						<id>jacoco-merge</id>-->
+<!--						<goals>-->
+<!--							<goal>merge</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<skip>${supernova.jacoco.skipMerge}</skip>-->
+<!--							<fileSets>-->
+<!--								<fileSet>-->
+<!--									<directory>${supernova.jacoco.destDir}</directory>-->
+<!--									<includes>-->
+<!--										<include>*.exec</include>-->
+<!--									</includes>-->
+<!--								</fileSet>-->
+<!--							</fileSets>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+					<!-- No need to have a separate report-integration goal, since both unit and integration test coverage has been appended to the same file and thus covered by the report goal. -->
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<skip>${supernova.jacoco.skipCheck}</skip>
+							<dataFile>${project.build.directory}/${project.artifactId}.exec</dataFile>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>INSTRUCTION</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>${jacoco.coverage.minimum}</minimum>
+										</limit>
+										<limit>
+											<counter>BRANCH</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>${jacoco.coverage.minimum}</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-sources-to-aggregate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<skip>${supernova.jacoco.skipCopyResources}</skip>
+							<outputDirectory>${supernova.multiModule.aggregateDir}/src/main/java</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.build.sourceDirectory}</directory>
+									<includes>
+										<include>**/*.java</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-resources-to-aggregate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<skip>${supernova.jacoco.skipCopyResources}</skip>
+							<outputDirectory>${supernova.multiModule.aggregateDir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}</directory>
+									<includes>
+										<!-- Copy production classes to aggregate. -->
+										<!-- Skip test classes because they don't need coverage. -->
+										<include>classes/**/*.class</include>
+										<include>${project.artifactId}.exec</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<!-- Always install at the end of a multi-module build. -->
+					<!-- This gives the aggregate project a chance to fail the build before installation, for example because coverage checks have not been met. -->
+					<installAtEnd>true</installAtEnd>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>delete-sources-from-aggregate</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<skip>${supernova.jacoco.skipDeleteSources}</skip>
+							<filesets>
+								<fileset>
+									<directory>${project.build.sourceDirectory}</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- The nexus-staging-maven-plugin replaces the maven-deploy-plugin. -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>${nexus-staging-maven-plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<!--
+						Below is necessary to make sure deploy happens for every module of a multi-module build.
+						Without it, deployment happens at the end, in the last module, and if the last module skips
+						deployment, nothing is deployed at all.
+					-->
+<!--					<skipLocalStaging>true</skipLocalStaging>-->
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${maven-enforcer-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>enforce-no-snapshots-in-releases</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireReleaseDeps>
+									<onlyWhenRelease>true</onlyWhenRelease>
+									<failWhenParentIsSnapshot>true</failWhenParentIsSnapshot>
+									<message>No snapshots allowed in release!</message>
+								</requireReleaseDeps>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+<!--	<reporting>-->
+		<!--
+			Usage of plugin together with maven-site-plugin without explicit selection of reports might lead to generation of redundant aggregate reports.
+			Specify reportSets explicitly to avoid this.
+		-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.jacoco</groupId>-->
+<!--				<artifactId>jacoco-maven-plugin</artifactId>-->
+<!--				<reportSets>-->
+<!--					<reportSet>-->
+<!--						<reports>-->
+<!--							&lt;!&ndash; Select non-aggregate reports. &ndash;&gt;-->
+<!--							<report>report</report>-->
+<!--						</reports>-->
+<!--					</reportSet>-->
+<!--				</reportSets>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</reporting>-->
+</project>

@@ -1,0 +1,16 @@
+# Maven files, such as target directory and flattened POM.
+target/
+.flattened-pom.xml
+release.properties
+*.asc
+*.releaseBackup
+
+# IntelliJ files.
+.idea/
+*.iml
+
+# Log files.
+*.log
+
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml.
+hs_err_pid*
