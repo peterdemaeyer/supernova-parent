@@ -55,7 +55,14 @@ This ensures that tests can be run from within a `*-tests.jar` or that test reso
 
 Test resources must reside in the directory corresponding to the package and class the resource is for.
 Resources common to tests may be in the package root.
-Resources specific to a particular test must be in a subdirectory
+Resources specific to a particular test must be in a subdirectory relative to
+
+Envision tests that obey a "given-when-then" structure.
+Use the test fixture (the for each/for all and fields of the test class) for environmental setup,
+but not to set up the object under test.
+Instantiate the object under test in every test, instead of in the test fixture.
+Prefer the method under test (the "when" part of the "given-when-then" structure) to be an API calls of the object under test.
+Prefer calling the API of the object under test rather than having to make package-private methods `@VisibleForTesting`.
 
 # Build standards
 
@@ -66,3 +73,25 @@ This is enforced by the `maven-enforcer-plugin`.
 
 All code must be covered 100% with unit tests by default.
 This is enforced by the `jacoco-maven-plugin`.
+
+# Project conventions
+
+## Production sources
+
+Production source code is in `src/main/<language>/`, for example `src/main/java/` or `src/main/bash/`.
+Production resources are in `src/main/resources/`.
+Production Java code is compiled to `target/classes/`.
+Production Java classes and their corresponding resources are packaged in the main jar artifact without classifier.
+
+## Test sources
+
+Unit test source code is in `src/test/<language>/`, for example `src/test/java/`.
+Unit test resources are in `src/test/resources/`.
+Integration test code is in `src/integration-test/<language>/`, for example `src/integration-test/java/` for Failsafe 
+or `src/integration-test/maven/` for Invoker.
+Integration test resources are in `src/integration-test/resources/`.
+Test Java code is compiled to `target/test-classes/` (both unit and integration test code).
+Test Java classes and their corresponding resources are packaged in the test-jar artifact with classifier `tests`.
+Bear in mind that the main difference between unit and integration tests is _when_ they run.
+Unit tests run after compilation but before packaging, while integration tests run after packaging.
+That means you can only test packaging in an integration test.

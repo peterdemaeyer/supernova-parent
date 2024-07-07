@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>su.pernova</groupId>
+		<artifactId>supernova-parent</artifactId>
+		<version>@project.version@</version>
+		<relativePath/>
+	</parent>
+	<groupId>su.pernova</groupId>
+	<artifactId>compiler-release</artifactId>
+	<name>Compiler Release</name>
+	<description>
+		Tests that
+		* the compiler plugin uses Java 11 by default
+		* the project's default character encoding is UTF-8 by default
+	</description>
+	<version>@project.version@</version>
+	<properties>
+		<supernova.gpg.skip>true</supernova.gpg.skip>
+	</properties>
+</project>

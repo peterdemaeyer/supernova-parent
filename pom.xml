@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>su.pernova</groupId>
-	<artifactId>bom</artifactId>
-	<name>Supernova BOM</name>
-	<description>Bill of materials and definition of standards for Supernova projects.</description>
-	<url>https://github.com/peterdemaeyer/supernova-bom/</url>
+	<artifactId>supernova-parent</artifactId>
+	<name>Supernova Parent</name>
+	<description>Parent project defining commons standards for Supernova projects.</description>
+	<url>https://github.com/peterdemaeyer/supernova-parent/</url>
 	<version>${revision}${changelist}</version>
 	<packaging>pom</packaging>
 	<licenses>
 		<license>
 			<name>MIT License</name>
-			<url>https://raw.githubusercontent.com/peterdemaeyer/supernova-bom/main/LICENSE.txt</url>
+			<url>https://raw.githubusercontent.com/peterdemaeyer/supernova-parent/main/LICENSE.txt</url>
 		</license>
 	</licenses>
 	<developers>
@@ -23,48 +23,60 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:git://github.com/peterdemaeyer/supernova-bom.git</connection>
-		<developerConnection>scm:git:ssh://github.com:peterdemaeyer/supernova-bom.git</developerConnection>
-		<url>https://github.com/peterdemaeyer/supernova-bom/tree/main/</url>
+		<connection>scm:git:git://github.com/peterdemaeyer/supernova-parent.git</connection>
+		<developerConnection>scm:git:ssh://github.com:peterdemaeyer/supernova-parent.git</developerConnection>
+		<url>https://github.com/peterdemaeyer/supernova-parent/tree/main/</url>
 		<tag>${project.version}</tag>
 	</scm>
 	<properties>
-		<revision>2.0.0</revision>
+		<revision>1.0.0</revision>
 		<changelist>-SNAPSHOT</changelist>
-		<maven.compiler.release>11</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<!-- Use two decimal places in reporting. -->
 		<jacoco.coverage.minimum>1.00</jacoco.coverage.minimum>
+		<!-- Supernova properties. -->
+		<supernova.surefire.skip>false</supernova.surefire.skip>
+		<supernova.failsafe.skip>false</supernova.failsafe.skip>
+		<supernova.invoker.skip>false</supernova.invoker.skip>
+		<supernova.gpg.skip>false</supernova.gpg.skip>
 		<!-- Dependency versions (alphabetically). -->
-		<checkstyle.version>10.12.2</checkstyle.version>
-		<commons-collections4.version>4.4</commons-collections4.version>
-		<commons-io.version>2.13.0</commons-io.version>
-		<commons-lang3.version>3.14.0</commons-lang3.version>
-		<commons-text.version>1.11.0</commons-text.version>
-		<jackson.version>2.17.2</jackson.version>
-		<junit-jupiter.version>5.10.2</junit-jupiter.version>
-		<junit-platform.version>1.10.2</junit-platform.version>
-		<log4j.version>2.23.1</log4j.version>
-		<mockito.version>5.11.0</mockito.version>
-		<!-- Maven plugin versions (alphabetically). -->
-		<build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
-		<flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
-		<jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
-		<maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
-		<maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
-		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-		<maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
-		<maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-		<maven-enforcer-plugin.version>3.3.0</maven-enforcer-plugin.version>
-		<maven-install-plugin.version>3.1.1</maven-install-plugin.version>
-		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
-		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-		<maven-shade-plugin.version>3.5.1</maven-shade-plugin.version>
-		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-		<maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-		<maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
-		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+		<apache.commons-collections4.version>4.4</apache.commons-collections4.version>
+		<apache.commons-io.version>2.13.0</apache.commons-io.version>
+		<apache.commons-lang3.version>3.14.0</apache.commons-lang3.version>
+		<apache.commons-text.version>1.11.0</apache.commons-text.version>
+		<apache.log4j.version>2.23.1</apache.log4j.version>
+		<fasterxml.jackson.version>2.17.2</fasterxml.jackson.version>
+		<junit.junit-jupiter.version>5.10.2</junit.junit-jupiter.version>
+		<junit.junit-platform.version>1.10.2</junit.junit-platform.version>
+		<mockito.mockito.version>5.11.0</mockito.mockito.version>
+		<puppycrawl.checkstyle.version>10.12.2</puppycrawl.checkstyle.version>
+		<!-- Plugin versions (alphabetically). -->
+		<apache.maven-antrun-plugin.version>3.1.0</apache.maven-antrun-plugin.version>
+		<apache.maven-checkstyle-plugin.version>3.3.1</apache.maven-checkstyle-plugin.version>
+		<apache.maven-clean-plugin.version>3.3.1</apache.maven-clean-plugin.version>
+		<apache.maven-compiler-plugin.version>3.11.0</apache.maven-compiler-plugin.version>
+		<apache.maven-dependency-plugin.version>3.6.1</apache.maven-dependency-plugin.version>
+		<apache.maven-deploy-plugin.version>3.1.1</apache.maven-deploy-plugin.version>
+		<apache.maven-failsafe-plugin.version>3.1.2</apache.maven-failsafe-plugin.version>
+		<apache.maven-gpg-plugin.version>3.1.0</apache.maven-gpg-plugin.version>
+		<apache.maven-enforcer-plugin.version>3.3.0</apache.maven-enforcer-plugin.version>
+		<apache.maven-install-plugin.version>3.1.1</apache.maven-install-plugin.version>
+		<apache.maven-invoker-plugin.version>3.7.0</apache.maven-invoker-plugin.version>
+		<apache.maven-jar-plugin.version>3.3.0</apache.maven-jar-plugin.version>
+		<apache.maven-javadoc-plugin.version>3.5.0</apache.maven-javadoc-plugin.version>
+		<apache.maven-plugin-plugin.version>3.12.0</apache.maven-plugin-plugin.version>
+		<apache.maven-release-plugin.version>3.0.1</apache.maven-release-plugin.version>
+		<apache.maven-resources-plugin.version>3.3.1</apache.maven-resources-plugin.version>
+		<apache.maven-shade-plugin.version>3.5.1</apache.maven-shade-plugin.version>
+		<apache.maven-source-plugin.version>3.3.0</apache.maven-source-plugin.version>
+		<apache.maven-surefire-plugin.version>3.2.5</apache.maven-surefire-plugin.version>
+		<apache.maven-toolchains-plugin.version>3.1.0</apache.maven-toolchains-plugin.version>
+		<codehaus.build-helper-maven-plugin.version>3.5.0</codehaus.build-helper-maven-plugin.version>
+		<codehaus.flatten-maven-plugin.version>1.6.0</codehaus.flatten-maven-plugin.version>
+		<jacoco.jacoco-maven-plugin.version>0.8.12</jacoco.jacoco-maven-plugin.version>
+		<sonatype.nexus-staging-maven-plugin.version>1.6.13</sonatype.nexus-staging-maven-plugin.version>
 	</properties>
 	<distributionManagement>
 		<snapshotRepository>
@@ -82,118 +94,74 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
-				<version>${jackson.version}</version>
+				<version>${fasterxml.jackson.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-api</artifactId>
-				<version>${log4j.version}</version>
+				<version>${apache.log4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-core</artifactId>
-				<version>${log4j.version}</version>
+				<version>${apache.log4j.version}</version>
 			</dependency>
 			<!-- Compatibility with SLF4J. -->
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-slf4j-impl</artifactId>
-				<version>${log4j.version}</version>
+				<version>${apache.log4j.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 			<!-- Compatibility with Log4j 1.2. -->
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-1.2-api</artifactId>
-				<version>${log4j.version}</version>
+				<version>${apache.log4j.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter</artifactId>
-				<version>${junit-jupiter.version}</version>
+				<version>${junit.junit-jupiter.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>${mockito.version}</version>
+				<version>${mockito.mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-junit-jupiter</artifactId>
-				<version>${mockito.version}</version>
+				<version>${mockito.mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-collections4</artifactId>
-				<version>${commons-collections4.version}</version>
+				<version>${apache.commons-collections4.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>${commons-lang3.version}</version>
+				<version>${apache.commons-lang3.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-text</artifactId>
-				<version>${commons-text.version}</version>
+				<version>${apache.commons-text.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
+				<version>${apache.commons-io.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.puppycrawl.tools</groupId>
 				<artifactId>checkstyle</artifactId>
-				<version>${checkstyle.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>commons</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>commons</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>metrics</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>metrics</artifactId>
-				<version>${project.version}</version>
-				<type>test-jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>search</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>serialization</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>units</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>su.pernova</groupId>
-				<artifactId>statistics</artifactId>
-				<version>${project.version}</version>
+				<version>${puppycrawl.checkstyle.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -201,91 +169,92 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.jacoco-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>${maven-clean-plugin.version}</version>
+					<version>${apache.maven-clean-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
+					<version>${apache.maven-compiler-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${apache.maven-dependency-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${apache.maven-deploy-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${apache.maven-enforcer-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${apache.maven-failsafe-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>${maven-gpg-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>${maven-antrun-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-toolchains-plugin</artifactId>
-					<version>${maven-toolchains-plugin.version}</version>
+					<version>${apache.maven-gpg-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>${maven-install-plugin.version}</version>
+					<version>${apache.maven-install-plugin.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>flatten-maven-plugin</artifactId>
-					<version>${flatten-maven-plugin.version}</version>
+					<artifactId>maven-invoker-plugin</artifactId>
+					<version>${apache.maven-invoker-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${apache.maven-jar-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${apache.maven-javadoc-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${apache.maven-resources-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${apache.maven-source-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${apache.maven-surefire-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>${build-helper-maven-plugin.version}</version>
+					<version>${codehaus.build-helper-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven-surefire-plugin.version}</version>
-					<configuration>
-						<failIfNoTests>false</failIfNoTests>
-						<excludes>
-							<exclude>**/*IntegrationTest.java</exclude>
-							<exclude>**/*ContractTest.java</exclude>
-						</excludes>
-						<includes>
-							<include>**/*Test.java</include>
-						</includes>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>${maven-failsafe-plugin.version}</version>
-					<configuration>
-						<!-- Supernova defines *IntegrationTest as integration test name pattern instead of the default *IT. -->
-						<includes>
-							<include>**/*IntegrationTest.java</include>
-						</includes>
-					</configuration>
-				</plugin>
-				<plugin>
-					<artifactId>maven-shade-plugin</artifactId>
-					<version>${maven-shade-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>${jacoco-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${maven-javadoc-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven-source-plugin.version}</version>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>${codehaus.flatten-maven-plugin.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>${supernova.skip.surefire}</skip>
+					<failIfNoTests>false</failIfNoTests>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -297,6 +266,11 @@
 						</goals>
 						<configuration>
 							<properties>
+								<property>supernova.surefire.skip</property>
+								<property>supernova.failsafe.skip</property>
+								<property>supernova.invoker.skip</property>
+								<property>supernova.gpg.skip</property>
+								<property>supernova.javadoc.skip</property>
 								<property>supernova.multiModule.parent</property>
 								<property>supernova.multiModule.child</property>
 								<property>supernova.multiModule.aggregate</property>
@@ -319,8 +293,19 @@
 									}
 									return Boolean.parseBoolean(value);
 								}
+								// Unfortunately, BeanShell does not support inline anonymous inner classes, so we have to define a variable for them.
+								falseSupplier = new Supplier() {
 
+									Boolean get() {
+										return false;
+									}
+								};
 								properties = project.getProperties();
+								supernova.surefire.skip = getOrDefault(properties, "supernova.surefire.skip", falseSupplier);
+								supernova.failsafe.skip = getOrDefault(properties, "supernova.failsafe.skip", falseSupplier);
+								supernova.invoker.skip = getOrDefault(properties, "supernova.invoker.skip", falseSupplier);
+								supernova.gpg.skip = getOrDefault(properties, "supernova.gpg.skip", falseSupplier);
+								supernova.javadoc.skip = getOrDefault(properties, "supernova.javadoc.skip", falseSupplier);
 								supernova.multiModule.parent = project.getArtifactId().endsWith("-parent");
 								parent = project.getParent();
 								supernova.multiModule.child = (parent != null) &amp;&amp; parent.getArtifactId().endsWith("-parent");
@@ -334,17 +319,10 @@
 										return !supernova.multiModule.child || supernova.multiModule.aggregate;
 									}
 								};
-								// Unfortunately, BeanShell does not support inline anonymous inner classes, so we have to define a variable for them.
 								supernova.jacoco.skipCopyResources = getOrDefault(properties, "supernova.jacoco.skipCopyResources", notNonAggregateChildSupplier);
 								// Merging serves two purposes:
 								// 1. In a regular module, merges UT an IT execution data files.
 								// 2. In an aggregate module, merges execution data files from all modules within reactor.
-								falseSupplier = new Supplier() {
-
-									Boolean get() {
-										return false;
-									}
-								};
 								supernova.jacoco.skipMerge = getOrDefault(properties, "supernova.jacoco.skipMerge", falseSupplier);
 								nonAggregateChildSupplier = new Supplier() {
 
@@ -472,6 +450,12 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<skip>${supernova.skip.failsafe}</skip>
+					<includes>
+						<include>**/*IntegrationTest.java</include>
+					</includes>
+				</configuration>
 				<executions>
 					<execution>
 						<id>integration-test</id>
@@ -539,6 +523,7 @@
 							<goal>sign</goal>
 						</goals>
 						<configuration>
+							<skip>${supernova.gpg.skip}</skip>
 							<keyname>${gpg.keyname}</keyname>
 							<passphraseServerId>${gpg.server}</passphraseServerId>
 						</configuration>
@@ -785,7 +770,7 @@
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>${nexus-staging-maven-plugin.version}</version>
+				<version>${sonatype.nexus-staging-maven-plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<serverId>ossrh</serverId>
@@ -801,7 +786,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>${maven-enforcer-plugin.version}</version>
+				<version>${apache.maven-enforcer-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>enforce-no-snapshots-in-releases</id>
@@ -817,6 +802,27 @@
 								</requireReleaseDeps>
 							</rules>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-invoker-plugin</artifactId>
+				<configuration>
+					<skipInstallation>${supernova.skip.invoker}</skipInstallation>
+					<skipInvocation>${supernova.skip.invoker}</skipInvocation>
+					<projectsDirectory>src/integration-test/maven/</projectsDirectory>
+					<cloneProjectsTo>${project.build.directory}/integration-test/maven/</cloneProjectsTo>
+					<settingsFile>src/integration-test/maven/settings.xml</settingsFile>
+					<localRepositoryPath>${project.build.directory}/local-repository/</localRepositoryPath>
+					<postBuildHookScript>verify</postBuildHookScript><!-- No extension required. -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>install</goal>
+							<goal>run</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

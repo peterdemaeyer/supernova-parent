@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>su.pernova</groupId>
+		<artifactId>supernova-parent</artifactId>
+		<version>@project.version@</version>
+		<relativePath/>
+	</parent>
+	<groupId>su.pernova</groupId>
+	<artifactId>failsafe-inclusions</artifactId>
+	<name>Failsafe Inclusions</name>
+	<description>
+		Tests that:
+		* The Failsafe plugin includes *IntegrationTest.java files.
+		* The Surefire plugin excludes *IntegrationTest.java files.
+	</description>
+	<version>@project.version@</version>
+	<properties>
+		<supernova.gpg.skip>true</supernova.gpg.skip><!-- Avoid "No pinentry" failures. -->
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

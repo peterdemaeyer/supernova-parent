@@ -1,21 +1,19 @@
 # Changes
 
-This and child projects follow [Semantic Versioning](https://semver.org/).
-Incompatible API changes require a new major version.
-Compatible API changes require a new minor version.
-Compatible bug fixes require a new patch version. 
+## Since 1.0.0
 
-## 1.0.0
-
-### Incompatible API changes
-
-* Bumped binary compatibility from Java 1.8 to Java 11.
-
-### Compatible API changes
-
+* Defined UTF-8 as default source encoding.
+* Defined Java 11 as default source and target version.
+* Defined latest version of Maven plugins.
 * Defined structure of multi-module projects.
+* Enabled Surefire with sources in `src/test/java/`, pattern `**/*Test`.
+Can be disabled with property `<supernova.surefire.skip>true</>`.
+* Enabled Failsafe with sources in `src/test/java/`, pattern `**/*IntegrationTest`.
+Can be disabled with property `<supernova.failsafe.skip>true</>`.
+* Enabled Invoker with sources in `src/integration-test/maven/`.
+Can be disabled with property `<supernova.invoker.skip>true</>`.
 
-### Compatible bug fixes
+## Bug fixes
 
 * Bumped versions of various dependencies.
 

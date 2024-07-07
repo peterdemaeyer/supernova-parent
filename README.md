@@ -4,6 +4,11 @@ Supernova defines a consistent set of principles and standards for projects.
 
 # Features
 
+This and child projects follow [Semantic Versioning](https://semver.org/).
+Incompatible API changes require a new major version.
+Compatible API changes require a new minor version.
+Compatible bug fixes require a new patch version.
+
 |Release versions must only depend on release versions. Release versions must thus not depend on any snapshot|
 |100% code coverage by default.|
 |Dependency management has dependencies of preferred third-party dependencies only.
