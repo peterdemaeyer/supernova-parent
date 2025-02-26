@@ -43,27 +43,27 @@
 		<supernova.gpg.skip>false</supernova.gpg.skip>
 		<!-- Dependency versions (alphabetically). -->
 		<apache.commons-collections4.version>4.4</apache.commons-collections4.version>
-		<apache.commons-io.version>2.13.0</apache.commons-io.version>
-		<apache.commons-lang3.version>3.14.0</apache.commons-lang3.version>
-		<apache.commons-text.version>1.11.0</apache.commons-text.version>
-		<apache.log4j.version>2.23.1</apache.log4j.version>
-		<fasterxml.jackson.version>2.17.2</fasterxml.jackson.version>
-		<junit.junit-jupiter.version>5.10.2</junit.junit-jupiter.version>
-		<junit.junit-platform.version>1.10.2</junit.junit-platform.version>
-		<mockito.mockito.version>5.11.0</mockito.mockito.version>
-		<puppycrawl.checkstyle.version>10.12.2</puppycrawl.checkstyle.version>
+		<apache.commons-io.version>2.17.0</apache.commons-io.version>
+		<apache.commons-lang3.version>3.17.0</apache.commons-lang3.version>
+		<apache.commons-text.version>1.12.0</apache.commons-text.version>
+		<apache.log4j.version>2.24.1</apache.log4j.version>
+		<fasterxml.jackson.version>2.18.1</fasterxml.jackson.version>
+		<junit.junit-jupiter.version>5.11.3</junit.junit-jupiter.version>
+		<junit.junit-platform.version>1.11.3</junit.junit-platform.version>
+		<mockito.mockito.version>5.14.2</mockito.mockito.version>
+		<puppycrawl.checkstyle.version>10.19.0</puppycrawl.checkstyle.version>
 		<!-- Plugin versions (alphabetically). -->
 		<apache.maven-antrun-plugin.version>3.1.0</apache.maven-antrun-plugin.version>
-		<apache.maven-checkstyle-plugin.version>3.3.1</apache.maven-checkstyle-plugin.version>
-		<apache.maven-clean-plugin.version>3.3.1</apache.maven-clean-plugin.version>
-		<apache.maven-compiler-plugin.version>3.11.0</apache.maven-compiler-plugin.version>
-		<apache.maven-dependency-plugin.version>3.6.1</apache.maven-dependency-plugin.version>
-		<apache.maven-deploy-plugin.version>3.1.1</apache.maven-deploy-plugin.version>
-		<apache.maven-failsafe-plugin.version>3.1.2</apache.maven-failsafe-plugin.version>
-		<apache.maven-gpg-plugin.version>3.1.0</apache.maven-gpg-plugin.version>
-		<apache.maven-enforcer-plugin.version>3.3.0</apache.maven-enforcer-plugin.version>
-		<apache.maven-install-plugin.version>3.1.1</apache.maven-install-plugin.version>
-		<apache.maven-invoker-plugin.version>3.7.0</apache.maven-invoker-plugin.version>
+		<apache.maven-checkstyle-plugin.version>3.6.0</apache.maven-checkstyle-plugin.version>
+		<apache.maven-clean-plugin.version>3.4.0</apache.maven-clean-plugin.version>
+		<apache.maven-compiler-plugin.version>3.13.0</apache.maven-compiler-plugin.version>
+		<apache.maven-dependency-plugin.version>3.8.1</apache.maven-dependency-plugin.version>
+		<apache.maven-deploy-plugin.version>3.1.3</apache.maven-deploy-plugin.version>
+		<apache.maven-failsafe-plugin.version>3.5.1</apache.maven-failsafe-plugin.version>
+		<apache.maven-gpg-plugin.version>3.2.7</apache.maven-gpg-plugin.version>
+		<apache.maven-enforcer-plugin.version>3.5.0</apache.maven-enforcer-plugin.version>
+		<apache.maven-install-plugin.version>3.1.3</apache.maven-install-plugin.version>
+		<apache.maven-invoker-plugin.version>3.8.1</apache.maven-invoker-plugin.version>
 		<apache.maven-jar-plugin.version>3.3.0</apache.maven-jar-plugin.version>
 		<apache.maven-javadoc-plugin.version>3.5.0</apache.maven-javadoc-plugin.version>
 		<apache.maven-plugin-plugin.version>3.12.0</apache.maven-plugin-plugin.version>
@@ -73,10 +73,10 @@
 		<apache.maven-source-plugin.version>3.3.0</apache.maven-source-plugin.version>
 		<apache.maven-surefire-plugin.version>3.2.5</apache.maven-surefire-plugin.version>
 		<apache.maven-toolchains-plugin.version>3.1.0</apache.maven-toolchains-plugin.version>
-		<codehaus.build-helper-maven-plugin.version>3.5.0</codehaus.build-helper-maven-plugin.version>
+		<codehaus.build-helper-maven-plugin.version>3.6.0</codehaus.build-helper-maven-plugin.version>
 		<codehaus.flatten-maven-plugin.version>1.6.0</codehaus.flatten-maven-plugin.version>
 		<jacoco.jacoco-maven-plugin.version>0.8.12</jacoco.jacoco-maven-plugin.version>
-		<sonatype.nexus-staging-maven-plugin.version>1.6.13</sonatype.nexus-staging-maven-plugin.version>
+		<sonatype.nexus-staging-maven-plugin.version>1.7.0</sonatype.nexus-staging-maven-plugin.version>
 	</properties>
 	<distributionManagement>
 		<snapshotRepository>
@@ -111,32 +111,27 @@
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-slf4j-impl</artifactId>
 				<version>${apache.log4j.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 			<!-- Compatibility with Log4j 1.2. -->
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-1.2-api</artifactId>
 				<version>${apache.log4j.version}</version>
-				<scope>runtime</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter</artifactId>
 				<version>${junit.junit-jupiter.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
 				<version>${mockito.mockito.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-junit-jupiter</artifactId>
 				<version>${mockito.mockito.version}</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -432,7 +427,7 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-						<!-- Don't produce an artifact of type "jar" if main/src is empty. -->
+						<!-- Don't produce an artifact of type "jar" if main/src/ is empty. -->
 						<configuration>
 							<skipIfEmpty>true</skipIfEmpty>
 						</configuration>
@@ -441,7 +436,7 @@
 						<goals>
 							<goal>test-jar</goal>
 						</goals>
-						<!-- Don't produce an artifact of type "test-jar" if test/src is empty. -->
+						<!-- Don't produce an artifact of type "test-jar" if test/src/ is empty. -->
 						<configuration>
 							<skipIfEmpty>true</skipIfEmpty>
 						</configuration>
@@ -523,7 +518,6 @@
 							<goal>sign</goal>
 						</goals>
 						<configuration>
-							<skip>${supernova.gpg.skip}</skip>
 							<keyname>${gpg.keyname}</keyname>
 							<passphraseServerId>${gpg.server}</passphraseServerId>
 						</configuration>
@@ -741,6 +735,8 @@
 			<plugin>
 				<artifactId>maven-install-plugin</artifactId>
 				<configuration>
+					<!-- Allow projects that do not produce a main artifact but for example only a test artifact. -->
+					<allowIncompleteProjects>true</allowIncompleteProjects>
 					<!-- Always install at the end of a multi-module build. -->
 					<!-- This gives the aggregate project a chance to fail the build before installation, for example because coverage checks have not been met. -->
 					<installAtEnd>true</installAtEnd>

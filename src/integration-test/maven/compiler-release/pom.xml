@@ -16,7 +16,4 @@
 		* the project's default character encoding is UTF-8 by default
 	</description>
 	<version>@project.version@</version>
-	<properties>
-		<supernova.gpg.skip>true</supernova.gpg.skip>
-	</properties>
 </project>

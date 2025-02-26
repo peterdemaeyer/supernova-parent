@@ -16,15 +16,10 @@
 			* The build fails upon unit test failure.
 	</description>
 	<version>@project.version@</version>
-	<properties>
-		<!-- Avoid GPG plugin failing due to "No pinentry". It's not the purpose of this test. -->
-		<supernova.gpg.skip>true</supernova.gpg.skip>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>5.10.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

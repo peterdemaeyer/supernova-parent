@@ -8,12 +8,13 @@
 		<relativePath/>
 	</parent>
 	<groupId>su.pernova</groupId>
-	<artifactId>failsafe-inclusions</artifactId>
-	<name>Failsafe Inclusions</name>
+	<artifactId>empty-main-src</artifactId>
+	<name>Empty Main Sources</name>
 	<description>
 		Tests that:
-		* The Failsafe plugin includes *IntegrationTest.java files.
-		* The Surefire plugin excludes *IntegrationTest.java files.
+		* The maven-compile-plugin skips src/main/ and only compiler src/test/.
+		* The maven-install-plugin plugin skips the main jar and installs a test-jar.
+		* The version of the junit-jupiter dependency is inherited from supernova-parent.
 	</description>
 	<version>@project.version@</version>
 	<dependencies>
