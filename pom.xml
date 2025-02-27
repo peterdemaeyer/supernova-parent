@@ -503,6 +503,7 @@
 						</goals>
 						<configuration>
 							<excludePackageNames>*.internal.*</excludePackageNames>
+							<additionalJOption>-Xdoclint:none</additionalJOption>
 						</configuration>
 					</execution>
 				</executions>
