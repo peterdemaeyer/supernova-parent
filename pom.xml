@@ -32,8 +32,7 @@
 		<revision>1.0.0</revision>
 		<changelist>-SNAPSHOT</changelist>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.release>11</maven.compiler.release>
 		<!-- Use two decimal places in reporting. -->
 		<jacoco.coverage.minimum>1.00</jacoco.coverage.minimum>
 		<!-- Supernova properties. -->
