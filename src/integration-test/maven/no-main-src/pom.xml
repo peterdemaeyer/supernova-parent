@@ -7,12 +7,13 @@
 		<version>@project.version@</version>
 		<relativePath/>
 	</parent>
-	<artifactId>surefire-inclusions</artifactId>
-	<name>Surefire inclusions</name>
+	<artifactId>no-main-src</artifactId>
+	<name>No Main Sources</name>
 	<description>
 		Tests that:
-			* The Surefire plugin includes test/**/*Test.java files.
-			* The build fails upon unit test failure.
+		* The maven-compile-plugin skips src/main/ and only compiles src/test/.
+		* The maven-install-plugin plugin skips the main jar and installs a test-jar.
+		* The version of the junit-jupiter dependency is inherited from supernova-parent.
 	</description>
 	<version>@project.version@</version>
 	<dependencies>

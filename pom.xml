@@ -476,12 +476,14 @@
 						<goals>
 							<goal>jar-no-fork</goal>
 						</goals>
-						<!--
-							Given that we flatten the pom, it is useful to have the source pom.xml in the sources.
-							Especially for projects of packaging type "pom", for which it will be the ONLY file in the sources.
-						-->
 						<configuration>
+							<!--
+								Given that we flatten the pom, it is useful to have the source pom.xml in the sources.
+								Especially for projects of packaging type "pom", for which it will be the ONLY file in the sources.
+							-->
 							<includePom>true</includePom>
+							<!-- Do not create an empty sources jar if there is no main jar. -->
+							<forceCreation>false</forceCreation>
 						</configuration>
 					</execution>
 					<execution>

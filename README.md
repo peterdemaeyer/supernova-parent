@@ -1,8 +1,25 @@
-# Supernova
+# Supernova Parent
 
-Supernova defines a consistent set of principles and standards for projects.
+This Supernova Parent project defines standards for projects.
+Projects that have this project as a parent inherit a number of features.
+By design, the parent offers standards but does not impose them,
+meaning that all features it has to offer can be disabled or overridden. 
 
 # Features
+
+## Version updates of common plugins
+
+This parent project maintains the latest versions of plugins so that child projects don't have to.
+It is recommended that child projects rely on the versions provided by this parent,
+but may also choose to override them if needed.
+
+## Version updates of common dependencies
+
+This parent project maintains the latest versions of dependencies so that child projects don't have to.
+It is recommended that child projects rely on the versions provided by this parent,
+but may also choose to override them if needed.
+
+# Standards
 
 This and child projects follow [Semantic Versioning](https://semver.org/).
 Incompatible API changes require a new major version.
