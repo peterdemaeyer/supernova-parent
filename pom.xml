@@ -32,7 +32,7 @@
 		<revision>1.0.0</revision>
 		<changelist>-SNAPSHOT</changelist>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.release>11</maven.compiler.release>
+		<maven.compiler.release>21</maven.compiler.release>
 		<!-- Use two decimal places in reporting. -->
 		<jacoco.coverage.minimum>1.00</jacoco.coverage.minimum>
 		<!-- Supernova properties. -->
@@ -42,14 +42,13 @@
 		<supernova.gpg.skip>false</supernova.gpg.skip>
 		<!-- Dependency versions (alphabetically). -->
 		<apache.commons-collections4.version>4.4</apache.commons-collections4.version>
-		<apache.commons-io.version>2.18.0</apache.commons-io.version>
-		<apache.commons-lang3.version>3.17.0</apache.commons-lang3.version>
-		<apache.commons-text.version>1.13.0</apache.commons-text.version>
-		<apache.log4j.version>2.24.3</apache.log4j.version>
-		<fasterxml.jackson.version>2.18.2</fasterxml.jackson.version>
-		<junit.junit-jupiter.version>5.12.0</junit.junit-jupiter.version>
-		<junit.junit-platform.version>1.12.0</junit.junit-platform.version>
-		<mockito.mockito.version>5.15.2</mockito.mockito.version>
+		<apache.commons-io.version>2.21.0</apache.commons-io.version>
+		<apache.commons-lang3.version>3.19.0</apache.commons-lang3.version>
+		<apache.commons-text.version>1.14.0</apache.commons-text.version>
+		<apache.log4j.version>2.25.2</apache.log4j.version>
+		<jackson.version>3.0.2</jackson.version>
+		<junit.version>6.0.1</junit.version>
+		<mockito.version>5.20.0</mockito.version>
 		<puppycrawl.checkstyle.version>10.21.3</puppycrawl.checkstyle.version>
 		<!-- Plugin versions (alphabetically). -->
 		<apache.maven-antrun-plugin.version>3.1.0</apache.maven-antrun-plugin.version>
@@ -72,65 +71,42 @@
 		<apache.maven-source-plugin.version>3.3.0</apache.maven-source-plugin.version>
 		<apache.maven-surefire-plugin.version>3.2.5</apache.maven-surefire-plugin.version>
 		<apache.maven-toolchains-plugin.version>3.1.0</apache.maven-toolchains-plugin.version>
-		<codehaus.build-helper-maven-plugin.version>3.6.0</codehaus.build-helper-maven-plugin.version>
-		<codehaus.flatten-maven-plugin.version>1.6.0</codehaus.flatten-maven-plugin.version>
-		<jacoco.jacoco-maven-plugin.version>0.8.12</jacoco.jacoco-maven-plugin.version>
-		<sonatype.nexus-staging-maven-plugin.version>1.7.0</sonatype.nexus-staging-maven-plugin.version>
+		<codehaus.build-helper-maven-plugin.version>3.6.1</codehaus.build-helper-maven-plugin.version>
+		<codehaus.flatten-maven-plugin.version>1.7.3</codehaus.flatten-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
+		<sonatype.central-publishing-maven-plugin.version>0.9.0</sonatype.central-publishing-maven-plugin.version>
 	</properties>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
 	<dependencyManagement>
 		<!-- Alphabetically, by group ID then by artifact ID. -->
 		<dependencies>
 			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
+				<groupId>tools.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
-				<version>${fasterxml.jackson.version}</version>
+				<version>${jackson.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
+				<artifactId>log4j-bom</artifactId>
 				<version>${apache.log4j.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
-				<version>${apache.log4j.version}</version>
-			</dependency>
-			<!-- Compatibility with SLF4J. -->
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-slf4j-impl</artifactId>
-				<version>${apache.log4j.version}</version>
-			</dependency>
-			<!-- Compatibility with Log4j 1.2. -->
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-1.2-api</artifactId>
-				<version>${apache.log4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter</artifactId>
-				<version>${junit.junit-jupiter.version}</version>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>${mockito.mockito.version}</version>
+				<version>${mockito.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-junit-jupiter</artifactId>
-				<version>${mockito.mockito.version}</version>
+				<version>${mockito.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -165,7 +141,7 @@
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>${jacoco.jacoco-maven-plugin.version}</version>
+					<version>${jacoco-maven-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
@@ -766,14 +742,14 @@
 			</plugin>
 			<!-- The nexus-staging-maven-plugin replaces the maven-deploy-plugin. -->
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>${sonatype.nexus-staging-maven-plugin.version}</version>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>${sonatype.central-publishing-maven-plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<autoPublish>true</autoPublish>
+					<waitUntil>published</waitUntil>
+<!--					<autoReleaseAfterClose>true</autoReleaseAfterClose>-->
 					<!--
 						Below is necessary to make sure deploy happens for every module of a multi-module build.
 						Without it, deployment happens at the end, in the last module, and if the last module skips
